@@ -1,0 +1,45 @@
+[submodule "zenoh"]
+	path = zenoh
+	url = https://github.com/eclipse-zenoh/zenoh.git
+[submodule "zenoh-plugin-webserver"]
+	path = zenoh-plugin-webserver
+	url = https://github.com/eclipse-zenoh/zenoh-plugin-webserver.git
+[submodule "zenoh-plugin-ros1"]
+	path = zenoh-plugin-ros1
+	url = https://github.com/eclipse-zenoh/zenoh-plugin-ros1.git
+[submodule "zenoh-plugin-ros2dds"]
+	path = zenoh-plugin-ros2dds
+	url = https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git
+[submodule "zenoh-plugin-dds"]
+	path = zenoh-plugin-dds
+	url = https://github.com/eclipse-zenoh/zenoh-plugin-dds.git
+[submodule "zenoh-backend-filesystem"]
+	path = zenoh-backend-filesystem
+	url = https://github.com/eclipse-zenoh/zenoh-backend-filesystem.git
+[submodule "zenoh-backend-rocksdb"]
+	path = zenoh-backend-rocksdb
+	url = https://github.com/eclipse-zenoh/zenoh-backend-rocksdb.git
+[submodule "zenoh-backend-s3"]
+	path = zenoh-backend-s3
+	url = https://github.com/eclipse-zenoh/zenoh-backend-s3.git
+[submodule "zenoh-backend-influxdb"]
+	path = zenoh-backend-influxdb
+	url = https://github.com/eclipse-zenoh/zenoh-backend-influxdb.git
+[submodule "zenoh-plugin-mqtt"]
+	path = zenoh-plugin-mqtt
+	url = https://github.com/eclipse-zenoh/zenoh-plugin-mqtt.git
+[submodule "zenoh-c"]
+	path = zenoh-c
+	url = https://github.com/eclipse-zenoh/zenoh-c.git
+[submodule "zenoh-cpp"]
+	path = zenoh-cpp
+	url = https://github.com/eclipse-zenoh/zenoh-cpp.git
+[submodule "zenoh-python"]
+	path = zenoh-python
+	url = https://github.com/eclipse-zenoh/zenoh-python.git
+[submodule "zenoh-java"]
+	path = zenoh-java
+	url = https://github.com/eclipse-zenoh/zenoh-java.git
+[submodule "zenoh-kotlin"]
+	path = zenoh-kotlin
+	url = https://github.com/eclipse-zenoh/zenoh-kotlin.git
