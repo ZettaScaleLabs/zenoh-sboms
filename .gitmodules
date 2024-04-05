@@ -50,3 +50,7 @@
 	path = zenoh-kotlin
 	url = https://github.com/eclipse-zenoh/zenoh-kotlin.git
 	branch = main
+[submodule "conan-recipes"]
+	path = conan-recipes
+	url = https://github.com/ZettaScaleLabs/conan-recipes/
+	branch = main
