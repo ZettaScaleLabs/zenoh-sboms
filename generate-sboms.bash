@@ -4,7 +4,8 @@ set -xeo pipefail
 
 shopt -s globstar nullglob
 
-readonly root_dir="$(dirname "$0" | realpath)"
+readonly self_dir="$(dirname "$0")"
+readonly root_dir="$(realpath "$self_dir")"
 readonly out_dir="$root_dir/dist"
 readonly patches_dir="$root_dir/patches"
 
