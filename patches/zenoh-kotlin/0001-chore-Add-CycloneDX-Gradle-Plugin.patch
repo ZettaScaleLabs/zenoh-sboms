@@ -1,0 +1,53 @@
+From 3d41d247665fad5243cc4970f94a31b5936a9e3e Mon Sep 17 00:00:00 2001
+From: Mahmoud Mazouz <mazouz.mahmoud@outlook.com>
+Date: Thu, 18 Apr 2024 10:46:38 +0200
+Subject: [PATCH] chore: Add CycloneDX Gradle Plugin
+
+---
+ build.gradle.kts              |  1 +
+ zenoh-kotlin/build.gradle.kts | 13 +++++++++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/build.gradle.kts b/build.gradle.kts
+index 44bd0f1..0e2f6ac 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -34,6 +34,7 @@ plugins {
+     id("org.jetbrains.dokka") version "1.8.20" apply false
+     id("com.adarshr.test-logger") version "3.2.0" apply false
+     kotlin("plugin.serialization") version "1.9.0" apply false
++    id("org.cyclonedx.bom") version "1.8.2" apply false
+ }
+ 
+ subprojects {
+diff --git a/zenoh-kotlin/build.gradle.kts b/zenoh-kotlin/build.gradle.kts
+index 594e0b4..ad4c972 100644
+--- a/zenoh-kotlin/build.gradle.kts
++++ b/zenoh-kotlin/build.gradle.kts
+@@ -20,6 +20,7 @@ plugins {
+     id("org.jetbrains.dokka")
+     id("org.mozilla.rust-android-gradle.rust-android")
+     `maven-publish`
++    id("org.cyclonedx.bom")
+ }
+ 
+ android {
+@@ -150,3 +151,15 @@ tasks.whenObjectAdded {
+         this.inputs.dir(buildDir.resolve("rustJniLibs/android"))
+     }
+ }
++
++tasks.cyclonedxBom {
++    setIncludeConfigs(listOf("runtimeClasspath"))
++    setSkipConfigs(listOf("compileClasspath", "testCompileClasspath"))
++    setProjectType("library")
++    setSchemaVersion("1.8")
++    setDestination(project.file("../build/reports"))
++    setOutputName("zenoh-kotlin.cdx")
++    setOutputFormat("json")
++    setIncludeLicenseText(true)
++    setComponentVersion("2.0.0")
++}
+-- 
+2.39.3 (Apple Git-145)
+

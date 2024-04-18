@@ -2,7 +2,9 @@
 
 shopt -s globstar nullglob
 
-readonly out_dir="$(dirname "$0" | realpath)/dist"
+readonly root_dir="$(dirname "$0" | realpath)"
+readonly out_dir="$root_dir/dist"
+readonly patches_dir="$root_dir/patches"
 
 function generate_cargo_sboms () {
   local repos=(
@@ -62,17 +64,19 @@ function generate_gradle_sboms () {
   for repo in "${repos[@]}"; do
     (
       cd "$repo" || (echo "error: could not find repo $repo" && exit 1)
+      git apply "$patches_dir"/"$repo"/*.patch
       gradle cyclonedxBom
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
       mv build/reports/*.cdx.json "$repo_out_dir"
+      git restore .
     )
   done
 }
 
 # TODO: zenoh-c, zenoh-cpp
 
-generate_cargo_sboms
-generate_python_sboms
+# generate_cargo_sboms
+# generate_python_sboms
 generate_gradle_sboms
