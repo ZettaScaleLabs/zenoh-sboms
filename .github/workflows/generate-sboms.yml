@@ -3,6 +3,7 @@ name: Generate SBOMs
 on:
   workflow_dispatch:
   pull_request:
+  push:
 
 jobs:
   main:
