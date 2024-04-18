@@ -89,6 +89,7 @@ function generate_conan_sboms () {
 
   python3 -m pip install conan 'cyclonedx-python-lib>=5.0.0,<6'
   conan config install https://github.com/conan-io/conan-extensions.git
+  conan profile detect
 
   for repo in "${repos[@]}"; do
     (
