@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -xeo pipefail
+
 shopt -s globstar nullglob
 
 readonly root_dir="$(dirname "$0" | realpath)"
