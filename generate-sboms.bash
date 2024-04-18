@@ -87,7 +87,7 @@ function generate_conan_sboms () {
     'conan-recipes/zenoh-pico'
   )
 
-  python3 -m pip install conan 'cyclonedx-python-lib>=3.1.5,<5.0.0'
+  python3 -m pip install conan 'cyclonedx-python-lib>=5.0.0,<6'
   conan config install https://github.com/conan-io/conan-extensions.git
 
   for repo in "${repos[@]}"; do
