@@ -55,7 +55,7 @@ function generate_python_sboms () {
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
-      python3 -m cyclonedx_py environment > "$repo_out_dir"/"$(basename "$repo")".cdx.json
+      python3 -m cyclonedx_py environment > "$repo_out_dir"/"$repo".cdx.json
     )
   done
 }
@@ -80,8 +80,29 @@ function generate_gradle_sboms () {
   done
 }
 
-# TODO: zenoh-c, zenoh-cpp
+function generate_conan_sboms () {
+  local repos=(
+    'zenoh-c'
+    'zenoh-cpp'
+    'zenoh-pico'
+  )
+
+  python3 -m pip install conan 'cyclonedx-python-lib>=5.0.0,<6'
+  conan config install https://github.com/conan-io/conan-extensions.git
+  conan profile detect || echo "warning: failed to generate profile"
+
+  for repo in "${repos[@]}"; do
+    (
+      cd "conan-recipes/$repo" || (echo "error: could not find repo $repo" && exit 1)
+
+      local repo_out_dir=$out_dir/$repo
+      mkdir -p "$repo_out_dir"
+      conan sbom:cyclonedx --format 1.4_json ./all/conanfile.py 1> "$repo_out_dir"/"$repo".cdx.json
+    )
+  done
+}
 
 generate_cargo_sboms
 generate_python_sboms
 generate_gradle_sboms
+generate_conan_sboms
