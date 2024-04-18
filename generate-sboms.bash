@@ -95,7 +95,7 @@ function generate_conan_sboms () {
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
-      conan sbom:cyclonedx --format 1.4_json ./all/conanfile.py 1> "$repo_out_dir"/sboms.cdx.json # TODO: fix file name
+      conan sbom:cyclonedx --format 1.4_json ./all/conanfile.py 1> "$repo_out_dir"/"$(basename "$repo")".cdx.json
     )
   done
 }
