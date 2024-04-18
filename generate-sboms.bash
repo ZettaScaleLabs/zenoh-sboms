@@ -80,6 +80,6 @@ function generate_gradle_sboms () {
 
 # TODO: zenoh-c, zenoh-cpp
 
-# generate_cargo_sboms
-# generate_python_sboms
+generate_cargo_sboms
+generate_python_sboms
 generate_gradle_sboms
