@@ -1,0 +1,16 @@
+name: Generate SBOMs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    name: Generate SBOMs
+    runs-on: [self-hosted, integration]
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash generate-sboms.bash
+      - uses: actions/upload-artifact@v4
+        with:
+          path: dist
+          name: zenoh-sboms.zip
