@@ -14,7 +14,9 @@ function generate_cargo_sboms () {
     'zenoh'
     'zenoh-plugin-dds'
     'zenoh-plugin-mqtt'
-    'zenoh-plugin-ros1'
+    # FIXME(fuzzypixelz): Reenable this once zenoh-plugin-ros1 is fixed
+    # See: https://github.com/eclipse-zenoh/zenoh-plugin-ros1/pull/55 
+    # 'zenoh-plugin-ros1'
     'zenoh-plugin-ros2dds'
     'zenoh-plugin-webserver'
     'zenoh-backend-filesystem'
