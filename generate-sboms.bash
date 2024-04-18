@@ -48,7 +48,7 @@ function generate_python_sboms () {
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
-      python3 -m cyclonedx_py environment > "$repo_out_dir"/zenoh-python.cdx.json
+      python3 -m cyclonedx_py environment > "$repo_out_dir"/"$(basename "$repo")".cdx.json
     )
   done
 }
@@ -59,10 +59,20 @@ function generate_gradle_sboms () {
     'zenoh-kotlin'
   )
 
-  # TODO: https://github.com/CycloneDX/cyclonedx-gradle-plugin
+  for repo in "${repos[@]}"; do
+    (
+      cd "$repo" || (echo "error: could not find repo $repo" && exit 1)
+      gradle cyclonedxBom
+
+      local repo_out_dir=$out_dir/$repo
+      mkdir -p "$repo_out_dir"
+      mv build/reports/*.cdx.json "$repo_out_dir"
+    )
+  done
 }
 
 # TODO: zenoh-c, zenoh-cpp
 
 generate_cargo_sboms
 generate_python_sboms
+generate_gradle_sboms
