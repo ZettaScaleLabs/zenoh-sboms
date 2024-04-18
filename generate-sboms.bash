@@ -34,8 +34,8 @@ function generate_cargo_sboms () {
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
-      for f in "$repo"/**/*.cdx.json; do 
-         mv "$f" "$repo_out_dir"
+      for f in ./**/*.cdx.json; do
+        cp "$f" "$repo_out_dir"
       done
     )
   done
@@ -74,7 +74,7 @@ function generate_gradle_sboms () {
 
       local repo_out_dir=$out_dir/$repo
       mkdir -p "$repo_out_dir"
-      mv build/reports/*.cdx.json "$repo_out_dir"
+      cp build/reports/*.cdx.json "$repo_out_dir"
       git restore .
     )
   done
