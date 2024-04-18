@@ -84,6 +84,7 @@ function generate_conan_sboms () {
   local repos=(
     'conan-recipes/zenoh-c'
     'conan-recipes/zenoh-cpp'
+    'conan-recipes/zenoh-pico'
   )
 
   python3 -m pip install conan 'cyclonedx-python-lib>=3.1.5,<5.0.0'
